@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+
+
+{% block titile %}
+个人简历
+{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block script %}
+        <script type="text/javascript">
+    function changeResume(){
+				height=$(".first_sub_body").css("min-height");
+            $(".resume").css("min-height",height);
+		}
+		$(document).ready(function(){
+			//第一次加载时，自动适配大小
+			changeResume();
+			//当窗口发生改变时，自动适配大小
+			$(window).resize(function(){
+				changeResume();
+			});
+
+		});
+    </script>
+{% endblock %}
+{% block body %}
+    <embed class="resume" src="../static/resume.pdf" type="application/pdf" style="width:100%;margin:0px;padding:0px;overflow:hidden;display:block;">
+{% endblock %}
+{% block out_body %}
+
+{% endblock %}

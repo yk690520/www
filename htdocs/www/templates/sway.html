@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block titile %}
+最好的梦
+{% endblock %}
+{% block head %}
+    {{ super() }}
+    <link href="../static/css/index.css" rel="stylesheet" type="text/css" />
+    <script>
+    function changeIfr(){
+				top_banner_height=$(".top_banner").outerHeight(true);
+				last_foot_height=$(".last_foot").outerHeight(true);
+				window_height=$(window).height();
+				$(".iframe_body").height(window_height-last_foot_height-top_banner_height)
+			}
+			$(document).ready(function(){
+				changeIfr();
+				$(window).resize(function () {
+                    changeIfr();
+                });
+			})
+    </script>
+{% endblock %}
+{% block body %}
+    <iframe class="iframe_body"  src="https://sway.com/s/F08D5g3qpwA8oCE9/embed" frameborder="0" marginheight="0" marginwidth="0" max-width="100%"  scrolling="no" style="border: none; max-width: 100%; max-height: 100vh" >
+					</iframe>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block titile %}
+欢迎来到我的家园
+{% endblock %}
+{% block head %}
+    {{ super() }}
+    <link href="../static/css/index.css" rel="stylesheet" type="text/css"/>
+    <script>
+        function changeNgv(){
+				//自动适配各导航高度
+				//图片总宽度
+				sub_body_width=$(".first_sub_body").width();
+				//图片总高度
+				sub_body_height=sub_body_width/(1688/949);
+				//左侧上图片高度
+				left_top_height=sub_body_height*(338/949);
+				//左侧下图片高度
+				left_bottom_height=sub_body_height*(611/949);
+				//右侧上图片高度
+				right_top_height=sub_body_height*(729/949);
+				//右侧下图片高度
+				right_bottom_height=sub_body_height*(220/949);
+				$(".left_body_top").height(left_top_height);
+				$(".left_body_bottom").height(left_bottom_height);
+				$(".right_body_top").height(right_top_height);
+				$(".right_body_bottom").height(right_bottom_height);
+			}
+        $(document).ready(function(){
+		    changeNgv();
+		    $(window).resize(function () {
+                changeNgv();
+            });
+			$(".left_body_bottom").click(function(){
+				window.location.href="/sway.html";
+			});
+			$(".right_body_bottom").click(function () {
+                window.location.href="/link.html";
+            });
+			$(".right_body_top").click(function () {
+                window.location.href="/about-me.html"
+            })
+		})
+    </script>
+{% endblock %}
+{% block body %}
+    <div class="github_body"><a href="https://github.com/yk690520?tab=repositories">Welcom to my Github</a></div>
+					<div>
+					<div class="left_body">
+						<div class="left_body_top"></div>
+						<div class="left_body_bottom"></div>
+					</div>
+					<div class="right_body">
+						<div class="right_body_top"></div>
+						<div class="right_body_bottom"></div>
+					</div>
+					<div class="clear"></div>
+					</div>
+{% endblock %}
+{% block out_body %}
+    <div style="background-image: url('../static/image/left_body_top_hover.png');width: 0.1px;height: 0.1px;"></div>
+    <div style="background-image: url('../static/image/left_body_bottom_hover.png');width: 0.1px;height: 0.1px;"></div>
+	<div style="background-image: url('../static/image/right_body_top_hover.png');width: 0.1px;height: 0.1px;"></div>
+	<div style="background-image: url('../static/image/right_body_bottom_hover.png');width:0.1px;height: 0.1px;"></div>
+{% endblock %}

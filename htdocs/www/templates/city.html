@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block titile %}
+城市信息
+{% endblock %}
+{% block head %}
+    {{ super() }}
+<script language="javascript">
+	$(function(){
+		$('a.del_city').click(function(){
+			
+			var city_id=this.getAttribute("city_id")
+			var infor=confirm("确认删除?")
+            if(infor==true){
+                window.location.href="/city-delate.html?id="+city_id+"&jump_page=city"
+            }
+		});
+	});
+</script>
+{% endblock %}
+{% block body %}
+    <div style="text-align: center">
+        <div><form action="/city.html" method="post" style="display: inline-block">
+            <label>城市名：</label><input name="name" type="text" value="{{ name }}"/>&nbsp;
+			<label>id:</label><input name="id" type="text" value="{{ id }}" />&nbsp;
+			<input type="submit" value="查询" />&nbsp;&nbsp;<input type="button" value="新增">
+        </form>&nbsp;<span style="color: #ff1d2b">{{ infor }}</span></div>
+        <div style="margin-top: 10px">
+       <table style="text-align:center">
+            <thead>
+				<tr style="font-family: inherit;">
+					<td>城市名</td>
+					<td>sid</td>
+					<td>旧势力</td>
+					<td>新势力</td>
+					<td>X</td>
+					<td>Y</td>
+                    <td>操作</td>
+				</tr>
+            </thead>
+            <tbody>
+					{%- for city in citys  -%}
+                        <tr>
+                        <td>{{ city.name }}</td>
+                        <td>{{ city.sid }}</td>
+                        <td>{{ city.old_influence }}</td>
+                        <td>{{ city.new_influence }}</td>
+                        <td>{{ city.x }}</td>
+                        <td>{{ city.y }}</td>
+                        <td><a href="/city-editor.html?id={{ city.id }}&jump_page=city" style="color: #003eff;">修改</a>&nbsp;&nbsp;<a class="del_city" style="color: #003eff;" city_id="{{ city.id }}" href="javascript:void(0);">删除</a></td>
+                        </tr>
+                    {%- endfor -%}
+            
+            </tbody>
+        </table>
+
+    </div>
+    </div>
+{% endblock %}
+{% block out_body %}
+
+{% endblock %}
+	

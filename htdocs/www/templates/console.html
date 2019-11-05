@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block titile %}
+爆粉数据页
+{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block body %}
+    <div style="text-align: center">
+            <div><form action="/console.html" method="post" style="display: inline-block">
+                <label>爆粉前【同步微信粉丝数量】任务ID：</label><input name="before_task_id" type="text" value="{{ before_task_id }}"/><br>
+                <label>爆粉后【同步微信粉丝数量】任务ID：</label><input name="after_task_id" type="text" value="{{ after_task_id }}" /><br>
+                <input type="submit" value="查询" />
+            </form>&nbsp;<span style="color: #ff1d2b">{{ infor }}</span></div>
+        <div style="margin-top: 10px">
+       <table style="text-align:center">
+            <thead>
+				<tr style="font-family: inherit;">
+					<td>资产编号</td>
+					<td>wechat</td>
+					<td>爆粉前粉丝</td>
+					<td>爆粉后粉丝</td>
+					<td>爆粉数</td>
+				</tr>
+            </thead>
+            <tbody>
+					{%- for data in output_data  -%}
+                        <tr>
+                        <td>{{ data[0] }}</td>
+                        <td>{{ data[1] }}</td>
+                        <td>{{ data[2] }}</td>
+                        <td>{{ data[3] }}</td>
+                        <td>{{ data[4] }}</td>
+                        </tr>
+                    {%- endfor -%}
+            
+            </tbody>
+        </table>
+
+    </div>
+    </div>
+{% endblock %}
+{% block out_body %}
+
+{% endblock %}

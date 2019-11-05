@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block titile %}
+编辑城池信息
+{% endblock %}
+{% block head %}
+    {{ super() }}
+<style type="text/css">
+	.input-label{
+		display: inline-block;
+		width: 60px
+	}
+</style>
+{% endblock %}
+{% block body %}
+    <div style="margin: auto;width: 95%;">
+        <div><!-- 展示已经存在的手机验证码  输入的数据是一个for循环-->
+            {% for phone in phones %}
+                <form method="post" action="/add_check_code.html">
+                    <input type="hidden" name="id" value="{{ phone.id }}">
+                    <label>手机 :</label><input type="text" disabled="disabled" name="phone" readonly="readonly" value="{{ phone.phone }}">&nbsp;&nbsp;
+                    <label>验证码：</label><input type="text" name="check_code" value="{%- if phone.check_code -%}{{ phone.check_code }}{%- endif -%}"/>
+                    <input type="submit" value="更新">
+                    <label style="color: #ff1d2b;font-size: smaller">{{ phone.getStatus() }}</label>
+                    <a style="color: blue" href="/del_phone.html?phone={{ phone.phone }}">删除</a>
+                    <a style="color: blue" href="/reset_phone.html?phone={{ phone.phone }}">重置</a>
+                </form>
+
+
+            {% endfor %}
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div><!--提交新的手机号-->
+			<form method="post" action="/add_code.html">
+               <label>新增手机：</label><input type="text" name="phone">&nbsp;
+                <input type="submit" value="提交">
+        	</form>
+		<br><span style="color: #ff1d2b">{%- if infor -%}{{ infor }}{%- endif -%}</span></div>
+    </div>
+{% endblock %}
+{% block out_body %}
+
+{% endblock %}
+	

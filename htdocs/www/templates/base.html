@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head %}
+	<!--一些标准的网页头-->
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+	<meta HTTP-EQUIV="expires" CONTENT="0">
+	<meta name="name" content="Junxian">
+	<!--网页图标-->
+    <link rel="shortcut icon" href="../favicon.ico" />
+    
+	<!--引用的页面样式文件 -->
+	<link href="../static/css/base.css" rel="stylesheet" type="text/css" />
+	<!--外部引用的文件-->
+	<script src="../static/jquery/jquery-3.3.1.js"></script>
+	<title>{% block titile %}{% endblock %}</title>
+    {% endblock %}
+    <script>
+		function changeFirstSubBody(){
+			//自动适配first_sub_body最小高度
+				top_banner_height=$(".top_banner").outerHeight(true);
+				last_foot_height=$(".last_foot").outerHeight(true);
+				window_height=$(window).height();
+				set_height=window_height-top_banner_height-last_foot_height;
+				if(set_height<=500){
+					set_height=500;
+				}
+				$(".first_sub_body").css("min-height",set_height);
+		}
+		$(document).ready(function(){
+			//第一次加载时，自动适配大小
+			changeFirstSubBody();
+			//当窗口发生改变时，自动适配大小
+			$(window).resize(function(){
+				changeFirstSubBody();
+			});
+			//构建菜单
+			console.log("这位看代码的同学：不要再看了，你看不懂的");
+		});
+	</script>
+	{% block script %}
+    {% endblock %}
+</head>
+<body>
+	<div class="top_banner">
+			<div class="nav_div">
+				<ul class="nav_ul">
+					<li>
+						<a href="/index.html" >首页</a>
+					</li>
+					<li>
+						<a href="/about-me.html">个人简历</a>
+					</li>
+					<li>
+						<a href="/ue.html">游记</a>
+					</li>
+					<li>
+						<a href="/city.html"><bold><red>城池信息</red></bold></a>
+					</li>
+					<li class="nav_sub_li" style="float: right;margin: auto">
+						<ul>
+							{%- if person_count -%}
+								<li><a href="/counter.html"><span>入站人数：{{person_count}}</span></a>
+								</li>
+							{%- endif -%}
+							<li><span>|</span></li>
+							{%- if session['user'] -%}
+							<li>
+								<a href="/my.html"><span>欢迎你，{{ session['user'][0] }}</span></a>
+							</li>
+							<li>
+								<a href="/logout.html"><span>退出</span></a>
+							</li>
+							{%- else -%}
+							<li>
+								<a href="/login.html"><span>登陆</span></a>
+							</li>
+							{%- endif -%}
+						</ul>
+					</li>
+					<div class="clear"></div>
+				</ul>
+			</div>
+		</div>
+	<div class="first_body">
+				<div class="first_sub_body">
+					{% block body %}
+						
+					{% endblock %}
+				</div>
+	</div>
+    {% block out_body %}
+    {% endblock %}
+	<div class="last_foot">
+			<span >Copyright © 2018 <a style="color: #faffaf" href="mailto:yk690520@outlook.com">@Juxn</a> All Rights Reserved.</span>
+	</div>
+	
+	
+	</body>
+</html>

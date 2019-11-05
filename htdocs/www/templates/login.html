@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block titile %}
+登陆
+{% endblock %}
+{% block head %}
+    {{ super() }}
+    <script src="https://cdn.vaptcha.com/v2.js"></script>
+	<style type="text/css">
+		label {
+			display: inline-block;
+			min-width: 70px;
+			text-align:inherit;
+		}
+		form div{
+			margin-top: 5px;
+			margin-bottom: 5px;
+		}
+	
+	</style>
+{% endblock %}
+{% block body %}
+    <div style="text-align: center">
+        <form action="login.html" method="post" style="width:40%;margin: auto;text-align: left">
+            <div>欢迎登陆</div>
+			<div>
+			<label>用户名：</label><input name="user" type="text"/>
+            </div>
+            <div>
+			<label style="">密&nbsp;&nbsp;码：</label><input name="password" type="password" />
+            </div>
+            <div >
+			<input style="margin-left: 20%" type="submit" value="登陆"/>
+			<!--<a href="/reg.html" style="font-size: 15px;">注册</a>!-->
+            </div>
+            {%- if error -%}
+            <div style="color: red">{{ error }}</div>
+            {%- endif -%}
+        </form>
+        <div>
+            注册请邮件联系<a style="color:blue;" href="mailto:yk690520@outlook.com">@Juxn(点击即可发送邮件）</a>
+        </div>
+
+    </div>
+{% endblock %}
+{% block out_body %}
+
+{% endblock %}

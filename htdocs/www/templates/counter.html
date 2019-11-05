@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block titile %}
+入站统计
+{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block body %}
+    <div>
+        <table style="text-align:center;">
+            <thead>
+            <td>日期</td><td>访问人数</td>
+            </thead>
+            <tbody>
+            {%- for date,counter in counters -%}
+                <tr><td>{{ date }}</td><td>{{ counter }}</td></tr>
+            {%- endfor -%}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+{% block out_body %}
+
+{% endblock %}

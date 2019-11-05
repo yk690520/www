@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block titile %}
+编辑城池信息
+{% endblock %}
+{% block head %}
+    {{ super() }}
+<style type="text/css">
+	.input-label{
+		display: inline-block;
+		width: 60px
+	}
+</style>
+{% endblock %}
+{% block body %}
+    <div style="margin: auto;width: 50%;">
+        <div>
+			<form action="/city-editor.html" method="post">
+                <table>
+				{% if city %}
+					<tr>
+                    <label >城市名:</label><input name="name" type="text" value="{{ city.name }}"/><br>
+				    </tr>
+					<tr>
+					<label >SID:</label><input name="SID" type="text" value="{{ city.sid }}" /><br>
+                    </tr>
+					<tr>	
+					<label >旧势力：</label><input name="old_influence" type="text" value="{{ city.old_influence }}"><br>
+					</tr>
+					<tr>
+                    <label >新势力：</label><input name="new_influence" type="text" value="{{ city.new_influence }}"><br>
+						</tr>
+					<tr>
+                    <label >X:</label><input name="x" type="text" value="{{ city.x }}"><br>
+						</tr>
+					<tr>
+						<label >Y:</label><input name="y" type="text" value="{{ city.y }}"><br></tr>
+
+					
+                {% else %}
+                    <label  >城市名:</label><input name="name" type="text"/><br>
+				    <label >SID:</label><input name="SID" type="text"/><br>
+                    <label >旧势力：</label><input name="old_influence" type="text"><br>
+                    <label >新势力：</label><input name="new_influence" type="text"><br>
+                    <label >X:</label><input name="x" type="text"><br>
+                    <label >Y:</label><input name="y" type="text"><br>
+				{% endif %}
+						</table>
+				<input type="submit" value="保存" /><input type="button" value="返回">
+        	</form>
+		<br><span style="color: #ff1d2b">{{ infor }}</span></div>
+    </div>
+{% endblock %}
+{% block out_body %}
+
+{% endblock %}
+	

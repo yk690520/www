@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block titile %}
+跳转中。。。
+{% endblock %}
+{% block head %}
+    {{ super() }}
+	<script language="javascript">
+        {% if jump_infor %}
+            $(function(){
+                setTimeout("window.location.href=\"{{ jump_infor[0] }}\"",3000)
+            })
+        {% else %}
+             $(function(){
+                setTimeout("window.location.href=\"/index.html\"",3000)
+            })
+        {% endif %}
+	</script>
+{% endblock %}
+{% block body %}
+    <div>
+        {% if jump_infor %}
+        {{ jump_infor[2] }}，现在带您前往<a style="color: #003eff" href="{{ jump_infor[0] }}">{{ jump_infor[1] }}</a>页面。
+        {% else %}
+            亲爱的，现在带您前往<a style="color: #003eff" href="/index.html">首页</a>。
+        {% endif %}
+    </div>
+{% endblock %}
+{% block out_body %}
+
+{% endblock %}
+	

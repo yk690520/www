@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block titile %}
+给我留言吧
+{% endblock %}
+{% block head %}
+    {{ super() }}
+    <script>
+    $(document).ready(function(){
+		var xhr=null;
+		function save(){
+			if(xhr){
+				xhr.abort();
+			}
+			$(".status").text("保存中...")
+			links_data=$("textarea").val();
+			xhr=$.ajax(
+				{
+					type:'POST',
+					url:'/link.html',
+					data:{links:links_data},
+                    dataType:"json",
+					success:function(msg){
+						$(".status").text("");
+                        if(msg.message=="ok"){
+                            $("textarea").val(msg.infor)
+                        }
+					},
+					error:function(){
+						$(".status").text("保存失败")
+					}
+				}
+			);
+		}
+		$("textarea").on('input propertychange',save);
+	});
+    </script>
+
+{% endblock %}
+{% block body %}
+    <div class='div_commit'>
+			<form action="/link.html" method="post">
+				<textarea class="links" name="links" style="height: 200px;width:90%;border-color: aqua">
+					{%- if links -%}
+						{{links}}
+					{%- endif -%}
+				</textarea>
+			</form>
+    </div>
+    <div style="margin-bottom: 20px;"><span class="status" style="color: black;"></span></div>
+
+{% endblock %}
+{% block out_body %}
+
+{% endblock %}

@@ -1,0 +1,104 @@
+@charset "utf-8";
+
+.iframe_body{
+	width: 100%;
+	min-width: 760px;
+	min-height: 500px;
+}
+.github_body{
+	text-align: center;
+	line-height: 100px;
+	min-height: 100px;
+	background-color: black;
+}
+.github_body a{
+	font-size:35px;
+	
+}
+.left_body{
+	/*869*/
+	float: left;
+	width:51.481%;
+	
+}
+.left_body_top{
+	/*869*338*/
+	background-image: url("../image/left_body_top.png");
+	background-clip: content-box;
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	width: 100%;
+	min-width: 391.256px;
+	min-height: 152.1801px;
+	
+}
+.left_body_top:hover{
+	background-image: url("../image/left_body_top_hover.png");
+	cursor: pointer;
+}
+.left_body_bottom{
+	/*869*611*/
+	background-image: url("../image/left_body_bottom.png");
+	background-clip: content-box;
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	width:100%;
+	min-width: 391.256px;
+	min-height: 275.0949px;
+	
+}
+.left_body_bottom:hover{
+	background-image: url("../image/left_body_bottom_hover.png");
+	cursor: pointer;
+}
+.right_body{
+	float:right;
+	width:48.520%;
+}
+.right_body_top{
+	/*819*729*/
+	background-image: url("../image/right_body_top.png");
+	background-clip: content-box;
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	width:100%;
+	min-width:368.744px;
+	min-height: 328.233px;
+}
+.right_body_top:hover{
+	background-image: url("../image/right_body_top_hover.png");
+	cursor: pointer;
+}
+.right_body_bottom{
+	/*819*220*/
+	background-image: url("../image/right_body_bottom.png");
+	background-clip: content-box;
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	width: 100%;
+	min-width:368.744px;
+	min-height:99.052px;
+}
+.right_body_bottom:hover{
+	background-image: url("../image/right_body_bottom_hover.png");
+	cursor: pointer;
+}
+
+.github_body a:link,.github_body a:visited,.github_body a:active{
+	text-decoration: none;
+	color:white;
+}
+.github_body a:hover{
+	color:#E1E1E1;
+}
+
+
+
+
+
+
+
